@@ -1,16 +1,17 @@
+<link rel="stylesheet" href="style.css">
 <?php
 require('dbconnect.php');
 
-$sql = sprintf('INSERT INTO my_items SET maker_id=%d,item_name="%s",price=%d,keyword="%s"',
+$sql = sprintf('UPDATE my_items SET maker_id=%d, item_name="%s", price=%d, keyword="%s" WHERE id=%d',
   mysqli_real_escape_string($db,$_POST['maker_id']),
   mysqli_real_escape_string($db,$_POST['item_name']),
   mysqli_real_escape_string($db,$_POST['price']),
-  mysqli_real_escape_string($db,$_POST['keyword'])
+  mysqli_real_escape_string($db,$_POST['keyword']),
+  mysqli_real_escape_string($db,$_POST['id'])
 );
-
 mysqli_query($db,$sql) or die(mysqli_error($db));
 
 ?>
 
-<p>商品を登録しました。</p>
+<p>商品の情報を変更しました</p>
 <p><a href="index.php">一覧に戻る</a></p>
